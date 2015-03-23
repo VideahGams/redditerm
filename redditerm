@@ -28,10 +28,10 @@ import urllib.request, json, sys
 
 # Has the user inputted a username, if not, quit.
 try:
-	user = sys.argv[1]
+  user = sys.argv[1]
 except:
-	print("Error: No username provided. Please enter a username as an argument.")
-	sys.exit()
+  print("Error: No username provided. Please enter a username as an argument.")
+  sys.exit()
 
 # Grab the users 'about.json', make sure to set the user agent.
 url = "http://www.reddit.com/user/{username}/about.json".format(username = user)
@@ -40,10 +40,10 @@ req = urllib.request.Request(url, data = None, headers = {'User-Agent': 'reddite
 
 # If we can't get the users info, give up and output an error.
 try:
-	response = urllib.request.urlopen(req);
+  response = urllib.request.urlopen(req);
 except:
-	print("There was an error loading the account '{username}'. Are you sure it exists?".format(username = user))
-	sys.exit()
+  print("There was an error loading the account '{username}'. Are you sure it exists?".format(username = user))
+  sys.exit()
 
 # Read the JSON and decode it.
 rawdata = response.read()
@@ -52,23 +52,23 @@ data = json.loads(rawdata.decode())
 
 # Construct the terminal output.
 output = """
-                                        
-                                        
-                                        
+                                                                                                           
                       ███▄▄▄ ▄█▀▀▀█     
                      ▐█     ▀█▌   █▌    
                     ▐█        ▀███▀     
-                    █▌                  	{red}Username:{clear} {name}
+                    █▌                    {red}Username:{clear} {name}
            ▄▄██▀▀▀▀▀▀▀▀▀▀██▄▄           
-   ▄█▀▀███▀▀                 ▀▀██▀▀▀█▄  	{red}Link Karma:{clear} {link_karma}
+   ▄█▀▀███▀▀                 ▀▀██▀▀▀█▄    {red}Link Karma:{clear} {link_karma}
   ▐█  █▀      {red}▄▄▄       ▄▄▄{clear}     ▀█▄ ▐█  
-   ███       {red}█████     █████{clear}      ███▀  	{red}Comment Karma:{clear} {comment_karma}
+   ███       {red}█████     █████{clear}      ███▀    {red}Comment Karma:{clear} {comment_karma}
     █▌       {red}▀███▀     ▀███▀{clear}       █    
     ▐█                            ▐█    
      ▀█       ▄▄         ▄▄      ▄█     
        ▀█▄      ▀▀█████▀▀     ▄▄█▀      
           ▀██▄▄▄        ▄▄▄▄█▀▀         
                ▀▀▀▀▀▀▀▀▀▀               
+
+
 """
 
 output = output.format(
