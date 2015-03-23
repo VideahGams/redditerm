@@ -15,7 +15,7 @@ redditerm akacopman
 
 ```
 
-For convinence, you could add this to your .bashrc like so:
+For convenience, you could add this to your .bashrc like so:
 
 ```bash
 
